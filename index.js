@@ -3,6 +3,7 @@ let long;
 let lat;
 let temperatureDescription = document.querySelector('.temperature-description');
 let temperatureDegree = document.querySelector('.temperature-degree');
+let locationTimezone = document.querySelector('.location-timezone');
 
 if(navigator.geolocation){
 navigator.geolocation.getCurrentPosition
@@ -19,13 +20,18 @@ fetch(api)
 return response.json();
 })
 .then(data => {
-    console.log(data);
+    
     const {temperature, summary} = data.currently;
+    // set DOM elements from API
+    temperatureDegree.textContent = temperature;
+    temperatureDescription.textContent = summary;
+    locationTimezone.textContent = data.timezone;
      });
 
     });
   }
 });
 
+//https://youtu.be/wPElVpR1rwA?t=1638
 
 
