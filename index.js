@@ -21,7 +21,7 @@ return response.json();
 })
 .then(data => {
     
-    const {temperature, summary} = data.currently;
+    const {temperature, summary, icon} = data.currently;
     // set DOM elements from API
     temperatureDegree.textContent = temperature;
     temperatureDescription.textContent = summary;
@@ -30,8 +30,15 @@ return response.json();
 
     });
   }
+
+function setIcons(icon, iconID){
+  const skycons = new skycons({color : white});
+  const currentIcon = icon.replace(/-/g, "_").toUpperCase();
+  skycons.play();
+  return skycons.set(iconID, Skycons[currentIcon]);
+}
 });
 
-//https://youtu.be/wPElVpR1rwA?t=1638
+//https://youtu.be/wPElVpR1rwA?t=1966
 
 
